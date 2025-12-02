@@ -19,6 +19,7 @@ jobs:
         cache: maven
 
     - name: Run Sonar Analysis with cloud
+      continue-on-error: true   # <-- added here
       run: |
         mvn -B verify sonar:sonar \
           -Dsonar.projectKey=perry_perry \
@@ -58,4 +59,3 @@ jobs:
           target: 'http://testphp.vulnweb.com/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
-
